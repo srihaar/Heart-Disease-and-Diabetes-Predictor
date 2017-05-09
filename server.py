@@ -39,7 +39,9 @@ def predict():
     list1[11] = post.get(params[11])
     list1[12] = post.get(params[12])
     list1 = ','.join(list1)
-    l = os.system('python -W ignore heart_analysis.py '+list1)
+    os.system('python -W ignore heart_analysis.py '+list1)
+    f = open('test.txt','r')
+    l = int(f.read())
     return jsonify({'output':l})
 
 @app.route('/diabetes',methods=['GET','POST'])
@@ -55,7 +57,9 @@ def predict1():
     list1[6] = post.get('tricep')
     list1[7] = post.get('age')
     list1 = ','.join(list1)
-    l = os.system('python -W ignore diabetes.py '+ list1)
+    os.system('python -W ignore diabetes.py '+ list1)
+    f = open('test1.txt','r')
+    l = int(f.read())
     return jsonify({'output':l})
 
 
