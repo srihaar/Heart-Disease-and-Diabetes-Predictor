@@ -10,10 +10,11 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import SVC
-from keras.models import Sequential
-from keras.layers import Dense, Activation,Embedding,Bidirectional,LSTM
-from keras.utils import np_utils
-from keras.optimizers import SGD
+from sklearn.grid_search import GridSearchCV
+# from keras.models import Sequential
+# from keras.layers import Dense, Activation,Embedding,Bidirectional,LSTM
+# from keras.utils import np_utils
+# from keras.optimizers import SGD
 from decimal import *
 
 
@@ -55,15 +56,28 @@ X_train_std = sc.fit_transform(X_train)
 X_test_std = sc.fit_transform(X_test)
 clf = LogisticRegression(C=0.01)
 clf.fit(X_train_std,y_train)
-# # print clf.score(X_test_std,y_test)
-# # l = [1,2,1,1,1,1,1,1,1,1,1,1,1]
-print clf.predict(l)
+# print clf.score(X_test_std,y_test)
+# l = [1,2,1,1,1,1,1,1,1,1,1,1,1]
+import sys
+sys.stdout=open("test.txt","w")
+print int(clf.predict(l))
+sys.stdout.close()
+
+# rfc = RandomForestClassifier(n_jobs=-1,max_features= 'log2' ,n_estimators=100, oob_score = True)
+#
+# # param_grid = {
+# #     'n_estimators': [200, 700],
+# #     'max_features': ['auto', 'sqrt', 'log2']
+# # }
+# #
+# # CV_rfc = GridSearchCV(estimator=rfc, param_grid=param_grid, cv= 5)
+# rfc.fit(X_train_std,y_train)
 # # clf = RandomForestClassifier(n_jobs=20)
 # # clf.fit(X_train_std,y_train)
-# # clf.score(X_test_std,y_test)
-# # clf = SVC()
-# # clf.fit(X_train_std,y_train)
-# # clf.score(X_test_std,y_test)
+# print rfc.score(X_test_std,y_test)
+# clf = SVC()
+# clf.fit(X_train_std,y_train)
+# print clf.score(X_test_std,y_test)
 # # y_train_ohe = y_train
 # # y_test_ohe = y_test
 # # print type(X_train),type(X_test),type(y_train),type(y_test)
