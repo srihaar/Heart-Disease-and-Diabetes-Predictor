@@ -54,7 +54,8 @@ X_train,X_test,y_train,y_test = train_test_split(X_values,y_values,test_size=0.3
 sc = StandardScaler()
 X_train_std = sc.fit_transform(X_train)
 X_test_std = sc.fit_transform(X_test)
-clf = LogisticRegression(C=0.01)
+# # clf = LogisticRegression(C=0.01)
+clf = RandomForestClassifier(n_jobs=20)
 clf.fit(X_train_std,y_train)
 # print clf.score(X_test_std,y_test)
 # l = [1,2,1,1,1,1,1,1,1,1,1,1,1]
