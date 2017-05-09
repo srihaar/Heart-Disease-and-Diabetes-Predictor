@@ -42,5 +42,5 @@ model.compile(loss='binary_crossentropy',optimizer='adam',metrics=['accuracy'])
 y_train = y_train.reshape(-1,1)
 model.fit(X_train,y_train,validation_data=(X_test, y_test),nb_epoch=NB_EPOCHS,batch_size=BATCH_SIZE,verbose=0)
 sys.stdout=open("test1.txt","w")
-print str(model.predict_classes(np.array([a])))[2:-2]
+print int(model.predict_classes(np.array([a])))[2:-2]
 sys.stdout.close()
